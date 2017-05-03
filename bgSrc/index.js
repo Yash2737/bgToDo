@@ -18,10 +18,10 @@ const TodoForm = ({addTodo}) => {
   let input;
   // Return JSX
   return (
-    <div>
-      <input ref={node => {
+    <div className="todoInput">
+      <input id="todoItem" name="todoItem" ref={node => {
         input = node;
-      }} />
+      }} required />
       <button className="button1" onClick={() => {
         addTodo(input.value);
         input.value = '';
@@ -42,10 +42,10 @@ const TodoList = ({todos, remove}) => {
   const todoNode = todos.map((todo) => {
     return (<Todo todo={todo} key={todo.id} remove={remove}/>)
   });
-  return (<ul>{todoNode}</ul>);
+  return (<ul className="todoLists">{todoNode}</ul>);
 }
 
-// Contaner Component
+// Container Component
 // Todo Id
 window.id = 0;
 class TodoApp extends React.Component{
@@ -60,11 +60,15 @@ class TodoApp extends React.Component{
   // Add todo handler
   addTodo(val){
     // Assemble data
-    const todo = {text: val, id: window.id++}
-    // Update data
-    this.state.data.push(todo);
-    // Update state
-    this.setState({data: this.state.data});
+    if(val){
+      const todo = {text: val, id: window.id++}
+      // Update data
+      this.state.data.push(todo);
+      // Update state
+      this.setState({data: this.state.data});
+    }else{
+      alert("Enter Item Name");
+    }
   }
   // Handle remove
   handleRemove(id){

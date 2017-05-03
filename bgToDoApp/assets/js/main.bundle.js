@@ -90,10 +90,10 @@
 	  // Return JSX
 	  return _react2.default.createElement(
 	    'div',
-	    null,
-	    _react2.default.createElement('input', { ref: function ref(node) {
+	    { className: 'todoInput' },
+	    _react2.default.createElement('input', { id: 'todoItem', name: 'todoItem', ref: function ref(node) {
 	        input = node;
-	      } }),
+	      }, required: true }),
 	    _react2.default.createElement(
 	      'button',
 	      { className: 'button1', onClick: function onClick() {
@@ -129,12 +129,12 @@
 	  });
 	  return _react2.default.createElement(
 	    'ul',
-	    null,
+	    { className: 'todoLists' },
 	    todoNode
 	  );
 	};
 
-	// Contaner Component
+	// Container Component
 	// Todo Id
 	window.id = 0;
 
@@ -161,11 +161,15 @@
 	    key: 'addTodo',
 	    value: function addTodo(val) {
 	      // Assemble data
-	      var todo = { text: val, id: window.id++ };
-	      // Update data
-	      this.state.data.push(todo);
-	      // Update state
-	      this.setState({ data: this.state.data });
+	      if (val) {
+	        var todo = { text: val, id: window.id++ };
+	        // Update data
+	        this.state.data.push(todo);
+	        // Update state
+	        this.setState({ data: this.state.data });
+	      } else {
+	        alert("Enter Item Name");
+	      }
 	    }
 	    // Handle remove
 

@@ -113,24 +113,20 @@
 
     }
 
-    #gmap{
-      height: 100%;
-      width: 90%;
-      margin: 0 auto;
-      min-height: 250px;
+    .todoInput{
+      text-align: center;
     }
 
-
     .button1{
-      width: 50%;
+      width: 15%;
       max-width: 300px;
       height: 60px;
-      margin: 5% auto;
+      margin: 2% auto;
       padding: 0;
       border:0;
       border-radius: 0;
       text-align: center;
-      display: block;
+      display: inline-block;
       text-transform: uppercase;
       font-family: $fontStack;
       font-size: 14px;
@@ -146,6 +142,23 @@
 
       &:hover,&:active, &:focus{
         color: $fontColorLight;
+      }
+    }
+
+    ul.todoLists{
+      li{
+          list-style: none;
+          background: #efefef;
+          padding: 2%;
+          margin: 1% auto;
+          width: 80%;
+
+          &:after{
+            content: "X";
+            display: block;
+            float: right;
+            cursor: pointer;
+          }
       }
     }
 
